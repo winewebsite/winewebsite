@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="newindex.css">
+</head>
+
+<body>
+<div>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox">
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <li><a href="newindex.html">
+                    Home
+                </a></li>
+                <li><a href="newAbout.html">
+                    About
+                </a></li>
+                <li><a href="DataAnalysis.html">
+                    Analysis
+                </a></li>
+                <br>
+                <!--<h4>University College London</h4>-->
+                <!--<h5>Wine types and differentiation across USA</h5>-->
+                <p>The purpose of the study was to offer information of the distribution of the high-quality wines
+                    produced in
+                    the United States and identify the value of those top wines like a master sommelier though blind
+                    tasting. </p>
+
+                <p>The aim of this project is realised by an interactive map website developed by our group within
+                    Spatial Data
+                    Capture coursework. It is not only spatial visualisation but also general information about the
+                    wines by
+                    state including their variety, winery, designation, region etc.</p>
+                <p>The report also includes incisive graphics and information for wine related industry.</p>
+                <p></p>
+                <p>Overall, this provides a snapshot of current U.S wine industry.</p>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div>
+    <h2><b>DATA HIGHLIGHTS</b></h2>
+    <br>
+    <div id="text">
+
+        <p></p>
+        <p> The idea of this project was to use our dataset to produce a website that creates an
+            easy interactive way for a user to find out facts about a certain state's wine production.
+            This included Price, Score (Quality), Value for Money and common flavours. However, it was
+            also intended that it would be educational about environmental factors that could potentially
+            improve the quality of wine being output by a state. Therefore the analysis was broken down
+            into the following sections. </p>
+        <h3> Price and Score </h3>
+        <p></p>
+        <p> Price and Score are two key variables in this data analysis. A functional part of this
+            website is to show prices and scores of certain areas which was achieved through the mapping
+            of the data. Therefore users are able to see which states score the best or which state is
+            the priciest/cheapest. </p>
+        <p></p>
+        <h3> Value for Money </h3>
+        <p></p>
+        <p> Value for money is a concept that was created for the specific use of this website. It's
+            purpose is too show how good the quality of the wine is for the price paid. It would do this by
+            identifying the difference in a wine scoring 90 points for the price of $30 compared to a wine of
+            the same quality for a higher or lower price. To do this an index was created from the combined
+            values of price and score.</p>
+        <p>Here you can find full table with Value for money scores for each state</p>
+        <p></p>
+        <h3>Common Flavours</h3>
+        <p></p>
+        <p> An integral part of our analysis was to produce a map of flavours. It was a key aim to be
+            able to show the user where in the US they can expect certain flavours. Using python, it was
+            possible to chop up the review data and count the most commonly reoccurring flavours that reviewers
+            were experiencing whilst tasting the wine. Based on this, the flavours occurring the most can
+            be mapped into a flavour profile for the US. The flavour profile of the US can be seen below in the map</p>
+        <p> Yellow states show data pertaining to the flavour profile of that state</p>
+        <p> Grey States had no available data</p>
+        <p></p>
+        <h3>Climate and Quality</h3>
+        <p></p>
+        <p> The purpose of the website was also to explore some defining factors in the quality of the wine.
+            Therefore, sunshine exposure (as a percentage), humidity (as a percentage) and rainfall (by inch)
+            were tested through regression to see if a favourable climate produced some flavourable wine. </p>
+        <p></p>
+        <h3>Highlights of the analysis</h3>
+        <p></p>
+        <p>According to a series of statistics for the U.S wine market of recent years, the wine market is at a growth
+            period as a result of the trends of demographic shift of the United States.
+            Euromonitor International (2017) indicates that the ageing of the most loyal and target consumers of wine
+            results in the differences for the wine industry and market.
+            The significance of millennials and generation X is flourishing and the demand for high-quality and premium
+            wines at an affordable price level is highlighted as their consumption concepts are different with older
+            generations. </p>
+        <p>This study was limited to the perceptions of a range of master sommeliers collected from WineEnthusiast
+            (2018)
+            website as to the reviews and descriptions of the high-quality wines of the U.S that are evaluated based
+            on the price and points assigned to them. For the purpose of the study, the high-quality or top wines are
+            defined as the wines that has points over 80 out of 100.</p>
+        <p></p>
+        <h3>Major findings</h3>
+        <p></p>
+        <p>We can see that the states of Oregon, Rhode Island, and Washington break past the 92-point mark when it comes
+            to
+            value for money, placing in the top three for the average value for money.
+            Rhode Island comes out on top with the highest average quality wines with low average costs. Washington and
+            Oregon, place 2nd and 3rd, producing high quality wines, yet with higher costing wine.
+            New York manages to also break the 92-point mark, but with lower quality wine and much cheaper prices.
+            Whilst California is also producing good value for money wines, albeit slightly lower than the previously
+            mentioned wines, the customer would be expected to pay the highest costs for a less superior product.
+            Nevada and Kentucky are the two lowest ranking states in terms of value for money. Their wines are two of
+            the
+            costliest, falling below only California in terms of costs, and yet Nevada and Kentucky scored on average
+            84.25
+            and 83 on quality. Whilst these aren’t the lowest scores, States producing similar or worse quality wine,
+            such
+            as Iowa and Missouri, having significantly lower costs which in turn aid in bringing their value for money
+            up
+            in the rankings. In all the graph works well in telling the user where they might have to pay more for
+            inferior
+            products, or what they might have to compromise on to get a little more for their money. For instance, a
+            user of this will now know that they could get a similar higher quality wine in Washington for a cheaper
+            cost
+            than in California. Alternatively, a user will know that in Iowa or Ohio, they won’t necessarily get great
+            quality wine, but their money will go further.</p>
+        <br>
+
+        <img class='chart2' src="chart2.jpg" alt="Average Score, Price and Value for Money Chart">
+        <p></p>
+        <p>By far the most developed states when it comes to wines are located on the west of USA. California,
+            Washington
+            and Oregon states produce the biggest amount of top-quality wines.
+            Similarly, we can observe that top scoring wineries are also located within those states (plus Rhode
+            Island). On
+            the East Coast the biggest producer is New York (by number of produced wines).
+            However, by looking at the list of the scores of the best value for money single wines it does not only come
+            to
+            those 3 states but is divided fairly equally across the United States.</p>
+        <p>Here you can find full table with Value for money scores for each state</p><a target="_blank"
+                                                                                         href="Top 10 Value for money Wines.csv">Top
+        10 Value for money Wines</a>
+        <p>
+        <p> The Value for Money Index was created for the purposes of letting the users know which wine would give the
+            user
+            the most for their money. Therefore the top 5 wines, where applicable, were listed and ranked by the index
+            created for this project. Therefore any wine enthusiast can scroll through this handy table and immediately
+            be
+            informed of on whether or not they will be paying a fair price for the quality of wine in a chosen state.
+        </p>
+    </div>
+</div>
+</body>
+</html>

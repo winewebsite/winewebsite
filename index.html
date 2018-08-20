@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>World of WineCraft</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<div class="loading">loading...</div>
+<div class="wrapper">
+    <img class='bg' src="bg.jpg" alt="Blurred image of glasses of wine ordered from red to white wine">
+    <div class="info">
+
+        <h3>University College London</h3>
+        <h1 style="font-size: 56px;">World of Wine Craft</h1>
+        <br>
+        <h4>Wine types and differentiation across USA</h4>
+
+        <nav role="navigation">
+            <div id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                    <a href="#about">
+                        <li>About the Project</li>
+                    </a>
+                    <a href="Data Analysis.html" target="_blank">
+                        <li>Data highlights</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+</div>
+<div class='introduction' style='font-size:14px'>
+    <p></p>
+    <i style="text-align:center;">
+        <p>The purpose of the study was to offer information of the distribution of the high-quality wines produced in
+            the United States and identify the value of those top wines like a master sommelier though blind
+            tasting. </p>
+
+        <p>The aim of this project is realised by an interactive map website developed by our group within Spatial Data
+            Capture coursework. It is not only spatial visualisation but also general information about the wines by
+            state including their variety, winery, designation, region etc.</p>
+        <p>The report also includes incisive graphics and information for wine related industry.</p>
+        <p></p>
+        <p>Overall, this provides a snapshot of current U.S wine industry.</p>
+    </i>
+</div>
+<script type="text/javascript" src="dataset.json"></script>
+
+
+</div>
+<div class="map">
+    <div class="list">
+        <table>
+            <tbody>
+            <tr>
+                <td>State</td>
+                <td id='state'>Calculation...</td>
+            </tr>
+            <tr>
+                <td>Price: 100+</td>
+                <td id='price1'></td>
+            </tr>
+            <tr>
+                <td>Price: 81 - 100</td>
+                <td id='price2'></td>
+            </tr>
+            <tr>
+                <td>Price: 61 - 81</td>
+                <td id='price3'></td>
+            </tr>
+            <tr>
+                <td>Price: 41 - 60</td>
+                <td id='price4'></td>
+            </tr>
+            <tr>
+                <td>Price: 21 - 40</td>
+                <td id='price5'></td>
+            </tr>
+            <tr>
+                <td>Price: 0 - 20</td>
+                <td id='price6'></td>
+            </tr>
+            <tr>
+                <td>Point: 96 - 100</td>
+                <td id='point1'></td>
+            </tr>
+            <tr>
+                <td>Point: 91 - 95</td>
+                <td id='point2'></td>
+            </tr>
+            <tr>
+                <td>Point: 86 - 90</td>
+                <td id='point3'></td>
+            </tr>
+            <tr>
+                <td>Point: 80 - 85</td>
+                <td id='point4'></td>
+            </tr>
+            <tr>
+                <td id='close' colspan="2" style="text-align: center;cursor: pointer;">Close</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="chartdiv"></div>
+</div>
+<style>
+    #filter {
+        text-align: right;
+        padding: 0 20px;
+    }
+
+    #filter input {
+        width: 6em;
+        display: inline-block;
+    }
+</style>
+<div id="filter">
+    <span>Price from</span>
+    <input class='form-control input-sm' type="number" min='0'> to
+    <input class='form-control input-sm' type="number" min='0' maxlength='3'>
+    <span>Points from</span>
+    <input class='form-control input-sm' type="number" min='80' max='100' value='80'> to
+    <input class='form-control input-sm' type="number" min='80' max='100' value='100'>
+    <span>State:</span>
+    <select></select>
+    <span>&ensp;&ensp;</span>
+    <button class="btn btn-primary btn-xs">Search</button>
+</div>
+<div class="table">
+    <table id="myTable" class="table table-striped table-bordered" style="font-size:11px ;width:100%" >
+    <thead>
+    <tr class='header'>
+        <th>Description</th>
+        <th>Designation</th>
+        <th>Points</th>
+        <th>Price</th>
+        <th>State</th>
+        <th>Region</th>
+        <th>Region_2</th>
+        <th>Variety</th>
+        <th>Winery</th>
+        <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+
+</div>
+
+
+<div id="about" class='introduction' style='font-size:14px'>
+    <p></p>
+    <i style="text-align:center;">
+        <h4>Context</h4>
+        <p>According to a series of statistics for the U.S wine market of recent years, the wine market is at a growth
+            period as a result of the shifting demographic trends within the United States.
+            Euromonitor International (2017) indicates that the ageing population of the most loyal, target consumers of
+            wine has resulted in an industry and market that caters to the socio-economic backgrounds.
+            The significance of millenials and generation X in the wine market is apparent, as demand amongst the
+            demographic rises, yet there is a need for high-quality and premium wines to be at an affordable price,
+            which is apparent as their levels of consumption differs greatly from that of the older generations.</p>
+        <p> Therefore, this website has been created for all wine users alike, from the casual drinker taking an
+            interest to the connoiseurs and enthusiasts, to enable all generations to be aware of high-quality wines
+            at affordable prices.</p>
+        <p>This study was limited to the perceptions of a range of master sommeliers collected from WineEnthusiast
+            (2018) website as to the reviews and descriptions of the high-quality wines of the U.S that are evaluated
+            based
+            on the price and points assigned to them. For the purpose of the study, the high-quality or top wines are
+            defined as the wines that has points over 80 out of 100.</p>
+        <p>The purpose of the study was to offer information about the distribution of the high-quality wines produced
+            in the United States. This website looks to offer the user a useful tool in identifying the cost, the
+            quality and the value of those top wines like a master sommelier though blind tasting. </p>
+        <p>The aim of this project is realised by an interactive map website developed by our group within Spatial Data
+            Capture coursework. It is not only spatial visualisation but also general information about the wines by
+            state including their variety, winery, designation, region etc.</p>
+        <p>The report also includes incisive graphics and information for wine related industry.</p>
+        <p></p>
+        <p>This project intends to aid the casual wine drinker and the enthusiasts alike through providing a map of the
+            all the markers you may want to know about wine. Using the interactive map, the user can look at a location
+            and quickly identify common flavours, quality, price and value for money that they can expect.</p>
+    </i>
+</div>
+
+
+<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/usaLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+    var $p1 = $('#filter input').eq(0)
+    var $p2 = $('#filter input').eq(1)
+    var $p3 = $('#filter input').eq(2)
+    var $p4 = $('#filter input').eq(3)
+    var $provinces = $('#filter select')
+    var provinces = {}
+    for (var i = 0; i < dataset.length; i++) {
+        var province = dataset[i][4]
+        if (province in provinces) {
+            provinces[province]++
+        } else {
+            provinces[province] = 0
+            $provinces.append($('<option>' + province + '</option>'))
+        }
+    }
+
+    var filter = false
+    $('#filter button').click(function () {
+        if (!$p1.val() || !$p2.val() || !$p3.val() || !$p4.val() || !$provinces.val()) {
+            return alert('All items are required!')
+        }
+
+        filter = true
+        table.column(4).search('').draw()
+        console.log('end')
+        filter = false
+    })
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            if (!filter) return true
+
+            console.log(1)
+            var price = Number(data[3])
+            var point = Number(data[2])
+
+            if (price < parseInt($p1.val())) {
+                return false;
+            } else if (price > parseInt($p2.val())) {
+                return false;
+            } else if (point < parseInt($p3.val())) {
+                return false;
+            } else if (point > parseInt($p4.val())) {
+                return false;
+            } else if ($provinces.val() != data[4]) {
+                return false
+            }
+            return true;
+        }
+    );
+</script>
+<script>
+    var table = null
+    $(document).ready(function () {
+        table = $('#myTable').on('init.dt', function () {
+            document.querySelector('.loading').remove()
+        }).DataTable({
+            data: dataset,
+            pageLength: 10,
+        });
+    });
+    var map = AmCharts.makeChart("chartdiv", {
+        "type": "map",
+        "theme": "light",
+        "panEventsEnabled": true,
+        "colorSteps": 30,
+        "valueLegend": {
+            "right": 100,
+            "minValue": "No data",
+            "maxValue": "a lot!"
+        },
+        "dataProvider": {
+            "map": "usaLow",
+            "getAreasFromMap": true,
+        },
+        "areasSettings": {
+            "autoZoom": true,
+            "color": "#CDCDCD",
+            "colorSolid": "#5EB7DE",
+            "selectedColor": "#5EB7DE",
+            "outlineColor": "#666666",
+            "rollOverColor": "#88CAE7",
+            "rollOverOutlineColor": "#FFFFFF",
+            "selectable": true
+        },
+        "listeners": [{
+            "event": "clickMapObject",
+            "method": function (event) {
+                table.column(4).search(event.mapObject.title).draw()
+                setList(event.mapObject.title)
+                // $('html, body').animate({
+                //     scrollTop: $("#myTable_length").offset().top
+                // }, 300);
+            }
+        }, {
+            event: 'init',
+            method: function (e) {
+                document.querySelector('[title="menuItem"]').remove();
+                console.log(provinces)
+                // for (var i = 0; i < map.dataProvider.areas.length; i++) {
+                //     var p = map.dataProvider.areas[i]
+                //     var value = provinces[p.title] || 0
+                //     map.dataProvider.areas[i].value = value > 200 ? 200 : value
+                // }
+                // map.validateData();
+            }
+        }],
+        "export": {
+            "enabled": false
+        }
+    });
+
+    function setList(state) {
+        $('#state').text(state);
+        $('.list').css('right', '60px')
+        var price1 = 0;
+        var price2 = 0;
+        var price3 = 0;
+        var price4 = 0;
+        var price5 = 0;
+        var price6 = 0;
+        var point1 = 0;
+        var point2 = 0;
+        var point3 = 0;
+        var point4 = 0;
+        for (var i = 0; i < dataset.length; i++) {
+            if (dataset[i][4] != state) continue
+            var price = Number(dataset[i][3])
+            var point = dataset[i][2]
+
+            if (price > 100) ++price1
+            if (81 <= price && price <= 100) ++price2
+            if (61 <= price && price <= 80) ++price3
+            if (41 <= price && price <= 60) ++price4
+            if (21 <= price && price <= 40) ++price5
+            if (01 <= price && price <= 20) ++price6
+
+            if (96 <= point && point <= 100) ++point1
+            if (91 <= point && point <= 95) ++point2
+            if (86 <= point && point <= 90) ++point3
+            if (80 <= point && point <= 85) ++point4
+
+        }
+        $('#price1').text(price1)
+        $('#price2').text(price2)
+        $('#price3').text(price3)
+        $('#price4').text(price4)
+        $('#price5').text(price5)
+        $('#price6').text(price6)
+        $('#point1').text(point1)
+        $('#point2').text(point2)
+        $('#point3').text(point3)
+        $('#point4').text(point4)
+    }
+
+    $('#close').click(function () {
+        $('.list').css('right', '-240px')
+    })
+</script>
+<script type="text/javascript" src="dataset.js"></script>
+<script>
+    var $p1 = $('#filter input').eq(0)
+    var $p2 = $('#filter input').eq(1)
+    var $p3 = $('#filter input').eq(2)
+    var $p4 = $('#filter input').eq(3)
+    var $provinces = $('#filter select')
+    var provinces = {}
+    for (var i = 0; i < dataset.length; i++) {
+        var province = dataset[i][4]
+        if (province in provinces) {
+            provinces[province]++
+        } else {
+            provinces[province] = 0
+            $provinces.append($('<option>' + province + '</option>'))
+        }
+    }
+
+    var filter = false
+    $('#filter button').click(function () {
+        if (!$p1.val() || !$p2.val() || !$p3.val() || !$p4.val() || !$provinces.val()) {
+            return alert('All items are required!')
+        }
+
+        filter = true
+        table.column(4).search('').draw()
+        console.log('end')
+        filter = false
+    })
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            if (!filter) return true
+
+            console.log(1)
+            var price = Number(data[3])
+            var point = Number(data[2])
+
+            if (price < parseInt($p1.val())) {
+                return false;
+            } else if (price > parseInt($p2.val())) {
+                return false;
+            } else if (point < parseInt($p3.val())) {
+                return false;
+            } else if (point > parseInt($p4.val())) {
+                return false;
+            } else if ($provinces.val() != data[4]) {
+                return false
+            }
+            return true;
+        }
+    );
+</script>
+</body>
+
+<footer>
+    <div class="resources" style='background-color: black;' font color='white'>
+        <p style="font-weight: bold;">Group: Piotr Kulak, Joseph Barratt, Yiting Cheng, Zijian Deng</p>
+        <p>Original dataset: <a href="https://www.kaggle.com/zynicide/wine-reviews" target="_blank">kaggle.com</a>
+        </p>
+        <p>WineEnthusiast Shop: <a href="http://www.wineenthusiast.com/" target="_blank">www.wineenthusiast.com</a>
+        </p>
+        <p>WineEnthusiast portal: <a href="https://www.winemag.com/?s=&drink_type=wine&wine_type=Rose&page=1"
+                                     target="_blank">www.winemag.com</a></p>
+        <p>International Wine Portal: <a href="https://www.wine.com/" target="_blank">www.wine.com</a></p>
+    </div>
+</footer>
+</html>

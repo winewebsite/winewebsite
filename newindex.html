@@ -364,9 +364,7 @@
     );
 
     map.on('click', function (e) {
-        if (geocoder) {
-            codeAddress(e.lngLat);
-        } else {
+
             let stateName = undefined;
             let sce = ['Alaska', 'California'];
             for (let k in locationObject) {
@@ -389,11 +387,8 @@
                 }
             }
             // console.log(stateName)
-
-
             setList(stateName);
-        }
-
+            codeAddress(e.lngLat);
         // console.log(staeName)
         // if (staeName) {
         //     setList(staeName);

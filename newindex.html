@@ -188,15 +188,41 @@
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet'/>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+
 <script type="text/javascript" src="dataset.json"></script>
-<script type="text/javascript" src="locationObject.json"></script>
+<!--<script type="text/javascript" src="locationObject.json"></script>-->
 <script>
-
+    var geocoder;
     var locationObject;
+
     //Set Layer ID
+    function initMap() {
+        geocoder = new google.maps.Geocoder();
+    }
 
-
+    function codeAddress(latLng) {
+        // var address = document.getElementById('address').value;
+        geocoder.geocode({'location': latLng}, function (results, status) {
+            if (status == 'OK') {
+                let statename = undefined;
+                for (let i = 0; i < results[0].address_components.length; i++) {
+                    let component = results[0].address_components[i];
+                    if (component.types[0] === 'administrative_area_level_1') {
+                        statename = component.long_name;
+                        break;
+                    }
+                }
+                setList(statename);
+                // return statename;
+            } else {
+                return null;
+            }
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDsGZrz0unLV1aqDiPbz9o7iNimCUPyd4&callback=initMap&language=en&region=US"></script>
+<script>
     var $p1 = $('#filter input').eq(0);
     var $p2 = $('#filter input').eq(1);
     var $p3 = $('#filter input').eq(2);
@@ -205,9 +231,7 @@
     var provinces = {};
     var table = null
     $(document).ready(function () {
-//        $.get('./dataset.json').done(function (data) {
-//            dataset = data;
-//            console.log(dataset.length)
+
         table = $('#myTable').on('init.dt', function () {
             document.querySelector('.loading').remove();
 
@@ -227,10 +251,7 @@
                 $provinces.append($('<option>' + province + '</option>'));
             }
         }
-//        });
-//        $.get('./locationObject.json').done(function (data) {
 
-//            let locationObjectTemp = data;
         let objectX = {};
         for (let i = 0, len = locationObjectTemp.features.length; i < len; i++) {
             let geometryObj = locationObjectTemp.features[i].geometry.coordinates;
@@ -343,33 +364,40 @@
     );
 
     map.on('click', function (e) {
-        // geocodingClient.forwardGeocode(e.lngLat,)
-
-        let stateName = undefined;
-        let sce = ['Alaska', 'California'];
-        for (let k in locationObject) {
-            if (sce.indexOf(k) != -1) {
-                continue;
-            }
-            if (locationObject[k][1] < e.lngLat.lng && locationObject[k][0] > e.lngLat.lng && locationObject[k][2] > e.lngLat.lat && locationObject[k][3] < e.lngLat.lat) {
-                stateName = k;
-                break
-            }
-
-        }
-
-        if (!stateName) {
-            for (let k in sce) {
+        if (geocoder) {
+            codeAddress(e.lngLat);
+        } else {
+            let stateName = undefined;
+            let sce = ['Alaska', 'California'];
+            for (let k in locationObject) {
+                if (sce.indexOf(k) != -1) {
+                    continue;
+                }
                 if (locationObject[k][1] < e.lngLat.lng && locationObject[k][0] > e.lngLat.lng && locationObject[k][2] > e.lngLat.lat && locationObject[k][3] < e.lngLat.lat) {
                     stateName = k;
                     break
                 }
+
             }
+
+            if (!stateName) {
+                for (let k in sce) {
+                    if (locationObject[k][1] < e.lngLat.lng && locationObject[k][0] > e.lngLat.lng && locationObject[k][2] > e.lngLat.lat && locationObject[k][3] < e.lngLat.lat) {
+                        stateName = k;
+                        break
+                    }
+                }
+            }
+            // console.log(stateName)
+
+
+            setList(stateName);
         }
-        // console.log(stateName)
 
-
-        setList(stateName);
+        // console.log(staeName)
+        // if (staeName) {
+        //     setList(staeName);
+        // }
 
     });
 

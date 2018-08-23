@@ -265,3 +265,21 @@ h3{
 #dataToggle input:checked ~ .dataDiv {
     transform: none;
 }
+.pictures2{
+    margin: 3% 14%;
+    text-align: center;
+}
+
+.column3 {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 23%;
+    transition: transform .2s;
+}
+*, *:after, *:before {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}

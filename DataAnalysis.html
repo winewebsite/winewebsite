@@ -108,6 +108,8 @@
         <p></p>
         <h3>Major findings</h3>
         <p></p>
+        <div id ="container2" style="height: 50vh;width: 70vw;margin-right: 15vw"></div>
+        <p></p>
         <p>We can see that the states of Oregon, Rhode Island, and Washington break past the 92-point mark when it comes
             to
             value for money, placing in the top three for the average value for money.
@@ -133,7 +135,8 @@
             quality wine, but their money will go further.</p>
         <br>
 
-        <img class='chart2' src="chart2.jpg" alt="Average Score, Price and Value for Money Chart">
+        <!--<img class='chart2' src="chart2.jpg" alt="Average Score, Price and Value for Money Chart">-->
+        <div id ="container1" style="height: 50vh;width: 70vw;margin-right: 15vw"></div>
         <p></p>
         <p>By far the most developed states when it comes to wines are located on the west of USA. California,
             Washington
@@ -158,4 +161,206 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+<script>
+
+    var dom = document.getElementById("container1");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    app.title = '折柱混合';
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999'
+                }
+            }
+        },
+        toolbox: {
+            feature: {
+                dataView: {show: true, readOnly: true},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore: {show: true},
+                saveAsImage: {show: false}
+            }
+        },
+        color:['#467DBF','#95B847','#c0504d'],
+        legend: {
+            data:['Avg Score','Avg Price ($)','Avg Value For Money Score'],
+            // right:10,
+            // bottom:50,
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['Arizona','California','Colorado','Connecticut','Hawaii','Idaho','Illinois','Iowa','Kentucky','Massachusetts','Michigan','Missouri','Nevada','New Jersey','New Mexico','New York','North Carolina','Oregon','Ohio','Pennsylvania','Rhode Island','Texas','Vermont','Virginia','Washington'],
+                axisPointer: {
+                    type: 'shadow'
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: 'IndexValue',
+                // min: 75.00,
+                // max: 95.00,
+                // interval: 5,
+                nameLocation:'center',
+                nameTextStyle:{fontWeight:'bold'},
+                axisLabel: {formatter: '{value}',
+                    // axisLine:{show:false}
+                }
+            },
+            {
+                type: 'value',
+                name: 'Avg Price',
+                // nameLocation:'top',
+                // nameTextStyle:{fontWeight:'bold'},
+                // min: 0,
+                // max: 25,
+                // interval: 5,
+                axisLabel: {
+                    formatter: '{value} '
+                }
+            },
+            {
+                type: 'value',
+                scale: true,
+                name: ' Price ($)',
+                nameLocation:'center',
+                nameTextStyle:{fontWeight:'bold'},
+                // axisLine:{show:false}
+                // max: 50,
+                // min: 0,
+                // boundaryGap: [0.2, 0.2]
+            }
+        ],
+        series: [
+            {
+                name:'Avg Score',
+                type:'bar',
+                yAxisIndex: 0,
+                data:[84.875,88.62944908,86.11764706,84,87,86.60526316,84.5,83,83,84.85714286,86.15315315,83.33333333,84.25,84,83.95555556,87.18124066,84.56521739,89.05374137,84.08333333,84.55555556,90,85.21505376,84.33333333,85.61948052,88.95141559]
+            },
+            {
+                name:'Avg Value For Money Score',
+                type:'bar',
+                yAxisIndex: 1,
+                data:[90.49083333,91.71563305,90.85980392,90.97777778,91.63333333,91.91807018,90.09444444,90.46666667,89.16666667,91.00952381,90.91441441,90.51111111,89.60833333,90.3,90.48296296,92.06887145,90.8826087,92.09053306,91.125,90.72222222,93.33333333,90.90071685,90.05555556,91.00887446,92.31327819]
+            },
+            {
+                name:'Avg Price ($)',
+                type:'line',
+                yAxisIndex: 2,
+                data:[29.2,38.98637232,32.98529412,15.33333333,28,20.76842105,32.33333333,15.5,35,21.28571429,32.43243243,17.33333333,37.75,25.5,22.42222222,22.82623318,21,36.54506438,13.75,23.33333333,25,25.60215054,31.66666667,27.01298701,32.43644413]
+            }
+
+        ]
+    };
+    ;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+
+    var dom2 = document.getElementById("container2");
+    var myChart2 = echarts.init(dom2);
+    var app2 = {};
+    option2 = null;
+    app2.title = '折柱混合';
+
+    option2 = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999'
+                }
+            }
+        },
+        toolbox: {
+            feature: {
+                dataView: {show: true, readOnly: true},
+                magicType: {show: true, type: ['bar']},
+                restore: {show: true},
+                saveAsImage: {show: false}
+            }
+        },
+        color:['#447BBD','#C64B47'],
+        legend: {
+            data:['Top Scoring Winery','Best Value Winery'],
+            // right:10,
+            // bottom:50,
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['Arizona','California','Colorado','Connecticut','Hawaii','Idaho','Illinois','Iowa','Kentucky','Massachusetts','Michigan','Missouri','Nevada','New Jersey','New Mexico','New York','North Carolina','Oregon','Ohio','Pennsylvania','Rhode Island','Texas','Vermont','Virginia','Washington'],
+                axisPointer: {
+                    type: 'shadow'
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+//                name: 'IndexValue',
+                // min: 75.00,
+                // max: 95.00,
+                // interval: 5,
+//                nameLocation:'center',
+//                nameTextStyle:{fontWeight:'bold'},
+                axisLabel: {formatter: '{value}',
+                    // axisLine:{show:false}
+                }
+            },
+            {
+                type: 'value',
+                scale: true,
+                nameLocation:'center',
+                nameTextStyle:{fontWeight:'bold'},
+                // axisLine:{show:false}
+                // max: 50,
+                // min: 0,
+                // boundaryGap: [0.2, 0.2]
+            }
+        ],
+        series: [
+            {
+                name:'Top Scoring Winery',
+                type:'bar',
+                yAxisIndex: 0,
+                data:[88,100,91,84,87,91,86,84,83,89,91,86,85,87,88,94,90,87,99,91,90,89,85,92,100]
+            },
+            {
+                name:'Best Value Winery',
+                type:'bar',
+                yAxisIndex: 1,
+                data:[92.43,96.96,93.33,91.26,91.63,94.33,91.26,91.13,89.16,92.83,94.13,91.96,91.03,91.96,92.66,95.23,93.8,92.76,96.2,93.3,93.33,93.13,90.33,94.16,96.66
+                ]
+            }
+
+        ]
+    };
+    ;
+    if (option2 && typeof option2 === "object") {
+        myChart2.setOption(option2, true);
+    }
+
+
+
+</script>
 </html>
